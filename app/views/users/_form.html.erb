@@ -1,0 +1,11 @@
+<h1><%= title %></h1>
+<form action="<%= action_url %>" method="post" %>
+  <%= csrf_token %>
+  <label>Email:
+    <input type="string" name="user[email]" value="<%= user.email %>">
+  </label><br/>
+  <label>Password:
+    <input type="string" name="user[password]">
+  </label><br/>
+  <input type="submit" value="<%= title %>">
+</form>
