@@ -1,0 +1,8 @@
+<form action="<%= action_url %>" method="post">
+  <%= csrf_token %>
+  <input type="hidden" name="_method" value="<%= method %>">
+  <label>Name:
+    <input type="string" name="band[name]">
+  </label><br/>
+  <input type="submit" value="<%= title %>">
+</form>

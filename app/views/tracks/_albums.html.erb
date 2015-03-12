@@ -1,0 +1,5 @@
+<% Album.all.try(:each) do |album| %>
+  <option selected="<%= 'selected' if current_album.id == band.id %>">
+    <%= album.name %>
+  </option>
+<% end %>

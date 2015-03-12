@@ -1,0 +1,17 @@
+<form action="<%= action_url %>" method="post">
+  <%= csrf_token %>
+  <input type="hidden" name="_method" value="<%= method %>">
+  <label>Band:
+    <select name="album[name]">
+      <%= render 'bands', current_band: @band %>
+    </select>
+  </label><br/>
+  <label>Name:
+    <input type="string" name="album[name]">
+  </label><br/>
+  <label>Live or Studio?:
+    <input type="radio" name="album[recording_type]" value="live">Live<br/>
+    <input type="radio" name="album[recording_type]" value="studio">Studio<br/>
+  </label><br/>
+  <input type="submit" value="<%= title %>">
+</form>

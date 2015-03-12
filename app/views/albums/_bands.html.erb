@@ -1,0 +1,5 @@
+<% Band.all.try(:each) do |band| %>
+  <option selected="<%= 'selected' if current_band.id == band.id %>">
+    <%= band.name %>
+  </option>
+<% end %>

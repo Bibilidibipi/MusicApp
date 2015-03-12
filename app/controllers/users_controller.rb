@@ -8,8 +8,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notice] = "Welcome, #{@user.name}!"
-      redirect_to 'user_url(@user)'
+      session[:session_token] = @user.session_token
+      flash[:notice] = ["Welcome, #{@user.email}!"]
+      redirect_to user_url(@user)
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_credentials
+    @user = User.find(params[:id])
     render :show
   end
 
