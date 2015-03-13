@@ -21,3 +21,22 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password_digest: "Password"
+        album:
+          attributes:
+            recording_type:
+              inclusion: "must be live or studio"
+            band_id:
+              blank: "must be selected"
+        track:
+          attributes:
+            bonus:
+              blank: "must be yes or no"
+            album_id:
+              blank: "must be selected"
+              taken: "already has a track of that name"

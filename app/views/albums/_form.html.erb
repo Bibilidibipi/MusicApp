@@ -2,16 +2,23 @@
   <%= csrf_token %>
   <input type="hidden" name="_method" value="<%= method %>">
   <label>Band:
-    <select name="album[name]">
-      <%= render 'bands', current_band: @band %>
+    <select name="album[band_id]">
+      <%= render 'bands', current_band: album.band %>
     </select>
   </label><br/>
   <label>Name:
-    <input type="string" name="album[name]">
+    <input type="string" name="album[name]", value="<%= album.name %>">
   </label><br/>
-  <label>Live or Studio?:
-    <input type="radio" name="album[recording_type]" value="live">Live<br/>
-    <input type="radio" name="album[recording_type]" value="studio">Studio<br/>
+  <label>Live or Studio?
+    <input type="radio"
+           name="album[recording_type]"
+           "<%= 'checked' if album.recording_type == 'live' %>"
+           value="live">Live
+    <input type="radio"
+           name="album[recording_type]"
+           "<%= 'checked' if album.recording_type == 'live' %>"
+           value="studio">Studio
+    <br/>
   </label><br/>
   <input type="submit" value="<%= title %>">
 </form>

@@ -2,16 +2,23 @@
   <%= csrf_token %>
   <input type="hidden" name="_method" value="<%= method %>">
   <label>Album:
-    <select name="track[name]">
-      <%= render 'albums', current_album: @album %>
+    <select name="track[album_id]">
+      <%= render 'albums', current_album: track.album %>
     </select>
   </label><br/>
   <label>Name:
-    <input type="string" name="track[name]">
+    <input type="string" name="track[name]", value="<%= track.name %>">
   </label><br/>
   <label>Bonus:
-    <input type="radio" name="track[bonus]" value="true">Yes<br/>
-    <input type="radio" name="track[bonus]" value="false">No<br/>
+    <input type="radio"
+           name="track[bonus]"
+           value="true"
+           "<%= 'checked' if track.bonus %>" >Yes
+    <input type="radio"
+           name="track[bonus]"
+           value="false"
+           "<%= 'checked' if !track.bonus && !track.bonus.nil? %>" >No
+    <br/>
   </label><br/>
   <label>Lyrics:
     <textarea name="track[lyrics]"></textarea>

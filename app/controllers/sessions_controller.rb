@@ -21,6 +21,6 @@ class SessionsController < ApplicationController
     @user = current_user
     @user.renew_session_token!
     session[:session_token] = nil
-    redirect_to root_url
+    redirect_to new_session_url
   end
 end

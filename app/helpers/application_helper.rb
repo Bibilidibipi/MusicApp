@@ -13,6 +13,7 @@ module ApplicationHelper
         #{csrf_token}
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="logout">
+      </form><br/>
     HTML
   end
 end

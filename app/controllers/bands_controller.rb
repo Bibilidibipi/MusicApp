@@ -1,5 +1,8 @@
 class BandsController < ApplicationController
+  before_action :ensure_login
+
   def new
+    @band = Band.new
     render :new
   end
 
@@ -10,7 +13,7 @@ class BandsController < ApplicationController
       flash[:notice] = ["Band created"]
       redirect_to band_url(@band)
     else
-      flash[:errors] = @band.errors.full_messages
+      flash.now[:errors] = @band.errors.full_messages
       render :new
     end
   end
@@ -36,7 +39,7 @@ class BandsController < ApplicationController
       flash[:notice] = ["Band edited"]
       redirect_to band_url(@band)
     else
-      flash[:errors] = @band.errors.full_messages
+      flash.now[:errors] = @band.errors.full_messages
       render :edit
     end
   end
@@ -45,7 +48,7 @@ class BandsController < ApplicationController
     @band = Band.find(params[:id])
     @band.destroy!
     flash[:notice] = ["Band destroyed"]
-    redirect_to :back
+    redirect_to bands_url
   end
 
   private

@@ -1,17 +1,20 @@
 class AlbumsController < ApplicationController
+  before_action :ensure_login
+
   def new
-    @band = Band.new
+    @album = Album.new(band_id: params[:band_id])
     render :new
   end
 
   def create
-    @album = album.new(album_params)
+    @album = Album.new(album_params)
 
     if @album.save
       flash[:notice] = ["Album created"]
       redirect_to album_url(@album)
     else
-      flash[:errors] = @album.errors.full_messages
+      flash.now[:errors] = @album.errors.full_messages
+      @band = Band.new
       render :new
     end
   end
@@ -33,16 +36,17 @@ class AlbumsController < ApplicationController
       flash[:notice] = ["Album edited"]
       redirect_to album_url(@album)
     else
-      flash[:errors] = @album.errors.full_messages
+      flash.new[:errors] = @album.errors.full_messages
       render :edit
     end
   end
 
   def destroy
     @album = Album.find(params[:id])
+    @band = @album.band
     @album.destroy!
     flash[:notice] = ["Album destroyed"]
-    redirect_to :back
+    redirect_to bands_url(@band)
   end
 
   private

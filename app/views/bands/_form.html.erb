@@ -2,7 +2,7 @@
   <%= csrf_token %>
   <input type="hidden" name="_method" value="<%= method %>">
   <label>Name:
-    <input type="string" name="band[name]">
+    <input type="string" name="band[name]", value="<%= band.name %>">
   </label><br/>
   <input type="submit" value="<%= title %>">
 </form>

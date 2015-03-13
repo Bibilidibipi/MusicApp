@@ -1,3 +1,4 @@
-<%= render Band %>
-
-<%= link_to "Add band", bands_url, method: "post" %>
+<% Band.all.try(:each) do |band| %>
+  <%= link_to band.name, band_url(band) %><br/>
+<% end %>
+<%= link_to "Add band", new_band_url %>
